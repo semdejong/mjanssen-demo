@@ -1,47 +1,58 @@
 import type { Metadata, Viewport } from "next";
-import { Geist } from "next/font/google";
+import { Azeret_Mono, Karla, Syne } from "next/font/google";
 import type { CSSProperties } from "react";
 import "./globals.css";
-import { content } from "@/content";
+import { colors, content, seo } from "@/content";
 import SleadsBadge from "@/components/SleadsBadge";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
+const syne = Syne({ subsets: ["latin"], weight: "700", variable: "--font-syne", display: "swap" });
+const karla = Karla({ subsets: ["latin"], weight: ["400", "500", "700"], variable: "--font-karla", display: "swap" });
+const azeret = Azeret_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-azeret",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: content.seo.title,
-  description: content.seo.description,
+  title: {
+    default: seo.title,
+    template: "%s · Stukadoorsbedrijf M. Janssen",
+  },
+  description: seo.description,
   robots: {
     index: false,
     follow: false,
     nocache: true,
     googleBot: { index: false, follow: false, noimageindex: true },
   },
-  icons: content.company.logo ? { icon: content.company.logo } : undefined,
 };
 
-export const viewport: Viewport = { themeColor: content.colors.primary };
+export const viewport: Viewport = { themeColor: colors.primary };
 
-// Sleads demo-analytics (cookieloos). Events tellen alleen voor slugs die via POST /api/demos geregistreerd zijn.
 const TRACKER_SRC = "https://sleads-demo-analytics.vercel.app/t.js";
 const TRACKER_ENDPOINT = "https://basic-tiger-117.convex.site/track";
 
-const c = content.colors;
 const themeVars = {
-  "--brand": c.primary,
-  "--brand-fg": c.primaryForeground,
-  "--accent": c.accent,
-  "--background": c.background,
-  "--foreground": c.foreground,
-  "--muted": c.muted,
+  "--brand": colors.primary,
+  "--brand-fg": colors.primaryForeground,
+  "--accent": colors.accent,
+  "--background": colors.background,
+  "--foreground": colors.foreground,
+  "--muted": colors.muted,
 } as CSSProperties;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang={content.seo.lang} style={themeVars} className={`${geistSans.variable} h-full scroll-smooth antialiased`}>
+    <html
+      lang={seo.lang}
+      style={themeVars}
+      className={`${syne.variable} ${karla.variable} ${azeret.variable} h-full antialiased`}
+    >
       <head>
         <script async src={TRACKER_SRC} data-demo={content.slug} data-endpoint={TRACKER_ENDPOINT} />
       </head>
-      <body className="min-h-full flex flex-col">
+      <body className="flex min-h-full flex-col pb-28 lg:pb-16">
         {children}
         <SleadsBadge />
       </body>

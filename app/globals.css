@@ -1,12 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --brand: #1d4ed8;
+  --brand: #303030;
   --brand-fg: #ffffff;
-  --accent: #f59e0b;
-  --background: #ffffff;
-  --foreground: #0f172a;
-  --muted: #f1f5f9;
+  --accent: #8f4a32;
+  --background: #f3f0e8;
+  --foreground: #303030;
+  --muted: #faf8f3;
+  --inkt: #303030;
+  --vanblauw: #1a1e24;
+  --spekglad: #f3f0e8;
+  --stucvlak: #faf8f3;
+  --rei: #8b9198;
+  --voeg: #5c5854;
+  --wit: #ffffff;
+  --baksteen: #8f4a32;
+  --baksteen-text: #6b3120;
 }
 
 @theme inline {
@@ -16,11 +25,142 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --color-inkt: var(--inkt);
+  --color-vanblauw: var(--vanblauw);
+  --color-spekglad: var(--spekglad);
+  --color-stucvlak: var(--stucvlak);
+  --color-rei: var(--rei);
+  --color-voeg: var(--voeg);
+  --color-wit: var(--wit);
+  --color-baksteen: var(--baksteen);
+  --color-baksteen-text: var(--baksteen-text);
+  --font-sans: var(--font-karla), "Karla", ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-syne), "Syne", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-azeret), "Azeret Mono", ui-monospace, monospace;
+}
+
+html {
+  overflow-x: clip;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  overflow-x: clip;
+  background: var(--spekglad);
+  color: var(--inkt);
   font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+}
+
+:focus-visible {
+  outline: 2px solid var(--inkt);
+  outline-offset: 3px;
+}
+
+.band-donker :focus-visible {
+  outline-color: var(--wit);
+}
+
+[id] {
+  scroll-margin-top: 6.5rem;
+}
+
+.rei {
+  position: relative;
+}
+
+.rei-label {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--spekglad);
+  padding: 0 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  color: var(--inkt);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rei-draw {
+    transform-origin: left center;
+    animation: rei-draw 0.85s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  .rise {
+    animation: rise 0.55s ease-out both;
+  }
+
+  .rise-late {
+    animation: rise 0.55s ease-out 0.08s both;
+  }
+}
+
+@keyframes rei-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.field {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid var(--rei);
+  background: var(--wit);
+  padding: 0.55rem 0.75rem;
+  font: inherit;
+  color: var(--inkt);
+  border-radius: 0;
+}
+
+textarea.field {
+  min-height: 8.5rem;
+  resize: vertical;
+}
+
+.skip {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  z-index: 80;
+  transform: translateY(-160%);
+  background: var(--wit);
+  padding: 0.5rem 0.75rem;
+}
+
+.skip:focus {
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
