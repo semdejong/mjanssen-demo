@@ -12,7 +12,7 @@ export default function RelatedWork({ ids, title = "Op de foto" }: { ids: string
         {items.map((item) => (
           <li key={item.id} className="border border-rei bg-stucvlak">
             <Link href={`/projecten#${item.id}`}>
-              <Photo src={item.src} width={item.width} height={item.height} alt={item.alt} />
+              <Photo src={item.src} width={item.width} height={item.height} alt={item.alt} frame="4/3" />
               <div className="border-t border-rei px-4 py-3">
                 <p className="font-display text-lg">{item.title}</p>
                 <p className="mt-1 text-base text-voeg">{item.caption}</p>

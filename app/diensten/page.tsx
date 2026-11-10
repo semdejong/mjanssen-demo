@@ -28,7 +28,7 @@ const rows = [
 export default function DienstenPage() {
   return (
     <SiteFrame>
-      <header data-section="pagina" className="mx-auto grid max-w-6xl items-end gap-10 px-5 py-12 lg:grid-cols-12">
+      <header data-section="pagina" className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-12 lg:grid-cols-12">
         <div className="lg:col-span-7">
           <h1 className="max-w-3xl text-4xl sm:text-6xl">Alles tussen ruwe muur en sausklare wand.</h1>
           <p className="mt-5 max-w-xl text-voeg">
@@ -39,7 +39,9 @@ export default function DienstenPage() {
           <Photo {...about.image} priority />
         </figure>
       </header>
-      <Rei left="BINNEN" right="BUITEN" />
+      <div className="mx-auto max-w-6xl px-5">
+        <Rei left="BINNEN" right="BUITEN" />
+      </div>
       <ul className="mx-auto max-w-6xl px-5">
         {rows.map((row) => (
           <li key={row.href} className="border-b border-rei">
@@ -52,7 +54,7 @@ export default function DienstenPage() {
         ))}
       </ul>
       <section data-section="maten" className="mx-auto grid max-w-6xl gap-8 px-5 py-16 lg:grid-cols-12">
-        <h2 className="text-4xl lg:col-span-4">Maten die zij zelf noemen</h2>
+        <h2 className="text-4xl lg:col-span-4">Maten uit het werk</h2>
         <ul className="border-t border-rei lg:col-span-8">
           {[
             ["Klasse A", "Sausklaar, veelal de hoogste afwerkingsklasse.", "/sausklaar"],

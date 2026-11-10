@@ -3,11 +3,13 @@ import type { Img } from "@/content";
 type PhotoProps = Img & {
   className?: string;
   priority?: boolean;
+  /** Gelijke uitsnede, nooit groter dan de eigen breedte. */
+  frame?: "4/3";
 };
 
 /** Toont een foto nooit breder dan de native breedte. */
-export default function Photo({ src, width, height, alt, className = "", priority = false }: PhotoProps) {
-  return (
+export default function Photo({ src, width, height, alt, className = "", priority = false, frame }: PhotoProps) {
+  const img = (
     // eslint-disable-next-line @next/next/no-img-element
     <img
       src={src}
@@ -16,8 +18,10 @@ export default function Photo({ src, width, height, alt, className = "", priorit
       height={height}
       loading={priority ? "eager" : "lazy"}
       decoding="async"
-      className={`h-auto max-w-full ${className}`}
-      style={{ width: "100%", maxWidth: width }}
+      className={frame ? `h-auto w-auto max-h-full max-w-full ${className}` : `h-auto max-w-full ${className}`}
+      style={frame ? { maxWidth: width } : { width: "100%", maxWidth: width }}
     />
   );
+  if (!frame) return img;
+  return <div className="flex aspect-[4/3] min-w-0 items-center justify-center overflow-hidden">{img}</div>;
 }

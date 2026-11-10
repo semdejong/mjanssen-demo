@@ -52,7 +52,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <script async src={TRACKER_SRC} data-demo={content.slug} data-endpoint={TRACKER_ENDPOINT} />
       </head>
-      <body className="flex min-h-full flex-col pb-28 lg:pb-16">
+      <body className="flex min-h-full flex-col pb-40 lg:pb-20">
         {children}
         <SleadsBadge />
       </body>

@@ -54,10 +54,12 @@ export default function ProjectenPage() {
       <header data-section="pagina" className="mx-auto max-w-6xl px-5 py-12">
         <h1 className="max-w-3xl text-4xl sm:text-6xl">Vier klussen, en het werk eromheen.</h1>
         <p className="mt-5 max-w-2xl text-voeg">
-          Schalkhaar, Deventer, Apeldoorn en Olst staan met plaats en maand op hun eigen pagina’s. De overige foto’s krijgen geen verzonnen adres.
+          Schalkhaar, Deventer, Apeldoorn en Olst staan met plaats en maand. Foto’s zonder plaats krijgen geen verzonnen adres.
         </p>
       </header>
-      <Rei left="SCHALKHAAR" right="OLST" />
+      <div className="mx-auto max-w-6xl px-5">
+        <Rei left="SCHALKHAAR" right="OLST" />
+      </div>
       <div className="mx-auto max-w-6xl px-5 pb-8">
         {groups.map((group) => (
           <section key={group.id} id={group.id} data-section={group.id} className="border-b border-rei py-12">

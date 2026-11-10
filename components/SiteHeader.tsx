@@ -9,6 +9,7 @@ import Rei from "@/components/Rei";
 
 export default function SiteHeader() {
   const pathname = usePathname();
+  const dienstActief = ["/diensten", "/sausklaar", "/wanden", "/buitenmuur", "/badkamer", "/beton-cire", "/airless", "/sausen", "/spachtelputz", "/lijsten"].includes(pathname);
   const menuId = useId();
   const dienstenId = useId();
   const headerRef = useRef<HTMLElement>(null);
@@ -76,7 +77,7 @@ export default function SiteHeader() {
           >
             <button
               type="button"
-              className="inline-flex min-h-11 items-center gap-1 text-base text-inkt"
+              className={`inline-flex min-h-11 items-center gap-1 text-base text-inkt ${dienstActief ? "underline decoration-2 underline-offset-8" : ""}`}
               aria-expanded={diensten}
               aria-controls={dienstenId}
               onClick={() => setDiensten((open) => !open)}
@@ -100,7 +101,7 @@ export default function SiteHeader() {
             ) : null}
           </div>
           {mainNav.map((item) => (
-            <Link key={item.href} href={item.href} className="inline-flex min-h-11 items-center text-base" aria-current={pathname === item.href ? "page" : undefined}>
+            <Link key={item.href} href={item.href} className={`inline-flex min-h-11 items-center text-base ${pathname === item.href ? "underline decoration-2 underline-offset-8" : ""}`} aria-current={pathname === item.href ? "page" : undefined}>
               {item.label}
             </Link>
           ))}
@@ -132,7 +133,7 @@ export default function SiteHeader() {
 
       {mobile
         ? createPortal(
-            <nav id={menuId} aria-label="Mobiel menu" className="fixed inset-x-0 bottom-16 z-50 overflow-y-auto bg-spekglad px-5 py-4 lg:hidden" style={{ top: headerHeight }}>
+            <nav id={menuId} aria-label="Mobiel menu" className="fixed inset-x-0 bottom-[58px] z-50 overflow-y-auto bg-spekglad px-5 py-4 lg:hidden" style={{ top: headerHeight }}>
           <p className="font-display text-2xl">Diensten</p>
           <ul className="mt-2 border-t border-rei">
             <li className="border-b border-rei">

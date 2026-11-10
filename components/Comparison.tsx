@@ -2,7 +2,7 @@ import Link from "next/link";
 import { finish } from "@/content";
 import Rei from "@/components/Rei";
 
-export default function Comparison({ labelled = false }: { labelled?: boolean }) {
+export default function Comparison({ labelled = false, showLinks = true }: { labelled?: boolean; showLinks?: boolean }) {
   return (
     <div data-section="klassen">
       {labelled ? <Rei left="SAUSKLAAR" right="BEHANGKLAAR" /> : <Rei />}
@@ -17,9 +17,11 @@ export default function Comparison({ labelled = false }: { labelled?: boolean })
               </li>
             ))}
           </ul>
-          <Link href="/sausklaar" className="mt-6 inline-flex min-h-11 items-center text-base underline underline-offset-4">
-            Sausklaar stucen
-          </Link>
+          {showLinks ? (
+            <Link href="/sausklaar" className="mt-6 inline-flex min-h-11 items-center text-base underline underline-offset-4">
+              Sausklaar stucen
+            </Link>
+          ) : null}
         </div>
         <div className="px-5 py-8">
           <h2 className="text-3xl">Behangklaar</h2>
@@ -31,9 +33,11 @@ export default function Comparison({ labelled = false }: { labelled?: boolean })
               </li>
             ))}
           </ul>
-          <Link href="/sausklaar#behangklaar" className="mt-6 inline-flex min-h-11 items-center text-base underline underline-offset-4">
-            Verschil met sausklaar
-          </Link>
+          {showLinks ? (
+            <Link href="/sausklaar#behangklaar" className="mt-6 inline-flex min-h-11 items-center text-base underline underline-offset-4">
+              Verschil met sausklaar
+            </Link>
+          ) : null}
         </div>
       </div>
     </div>

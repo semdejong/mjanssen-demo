@@ -19,7 +19,7 @@ export default function Article({ title, lead, image, children, related = [] }: 
   return (
     <SiteFrame>
       <article>
-        <header data-section="pagina" className="mx-auto grid max-w-6xl items-end gap-8 px-5 py-12 lg:grid-cols-12">
+        <header data-section="pagina" className="mx-auto grid max-w-6xl items-center gap-8 px-5 py-12 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <h1 className="max-w-3xl text-4xl text-inkt sm:text-5xl">{title}</h1>
             <p className="mt-5 max-w-xl text-voeg">{lead}</p>

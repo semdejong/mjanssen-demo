@@ -42,6 +42,13 @@
 html {
   overflow-x: clip;
   scroll-behavior: smooth;
+  scroll-padding-bottom: 7.5rem;
+}
+
+@media (min-width: 1024px) {
+  html {
+    scroll-padding-bottom: 1.5rem;
+  }
 }
 
 body {
@@ -51,6 +58,17 @@ body {
   font-family: var(--font-sans);
   font-size: 18px;
   line-height: 1.6;
+}
+
+@layer base {
+  img {
+    max-width: 100%;
+  }
+
+  /* A large native photo must not force its grid column past the viewport. */
+  .grid > * {
+    min-width: 0;
+  }
 }
 
 h1,

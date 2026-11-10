@@ -33,9 +33,9 @@ export default function OverMarcelPage() {
           </div>
         </header>
 
-        <Rei left="STUCADOOR" right="SCHILDER" />
-
-        <section data-section="vak" className="mx-auto grid max-w-6xl gap-px bg-rei px-5 py-12 sm:grid-cols-2">
+        <div className="mx-auto max-w-6xl px-5">
+          <Rei left="STUCADOOR" right="SCHILDER" />
+          <section data-section="vak" className="grid gap-px bg-rei sm:grid-cols-2">
           <div className="bg-spekglad p-6 sm:p-8">
             <h2 className="text-3xl">Stukadoor</h2>
             <p className="mt-4">
@@ -57,7 +57,8 @@ export default function OverMarcelPage() {
               </Link>
             </p>
           </div>
-        </section>
+          </section>
+        </div>
 
         <section data-section="werkgebied" className="bg-stucvlak">
           <div className="mx-auto max-w-6xl px-5 py-14">
@@ -67,7 +68,7 @@ export default function OverMarcelPage() {
             </p>
             <ul className="mt-8 grid grid-cols-2 border-t border-rei sm:grid-cols-3 lg:grid-cols-6">
               {company.cities.map((city) => (
-                <li key={city} className="border-b border-rei py-4 font-display text-xl lg:border-b-0 lg:border-r lg:px-3 lg:last:border-r-0">
+                <li key={city} className="border-b border-rei py-4 font-display text-xl lg:border-b-0 lg:border-r lg:px-4 lg:first:pl-0 lg:last:border-r-0">
                   {city}
                 </li>
               ))}

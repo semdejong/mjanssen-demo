@@ -33,15 +33,17 @@ export default function ProjectGallery({ items }: { items: Project[] }) {
         {items.map((item, itemIndex) => (
           <li key={item.id} id={item.id} className="border border-rei bg-stucvlak">
             <button type="button" className="block w-full text-left" onClick={() => setIndex(itemIndex)} aria-label={`Vergroot foto: ${item.title}`}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={item.src}
-                alt={item.alt}
-                width={item.width}
-                height={item.height}
-                className="h-auto max-w-full"
-                style={{ width: "100%", maxWidth: item.width }}
-              />
+              <span className="flex aspect-[4/3] min-w-0 items-center justify-center overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  width={item.width}
+                  height={item.height}
+                  className="h-auto w-auto max-h-full max-w-full"
+                  style={{ maxWidth: item.width }}
+                />
+              </span>
             </button>
             <div className="border-t border-rei px-4 py-4">
               <p className="font-display text-xl">{item.title}</p>

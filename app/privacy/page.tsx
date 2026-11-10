@@ -18,25 +18,29 @@ export default function PrivacyPage() {
 
         <h2 className="mt-10 text-3xl">Wie</h2>
         <p className="mt-4">
-          Deze website is een concept van Sleads voor {company.name}, {company.owner}, {contact.address}. Mail:{" "}
+          Deze website is een concept van Sleads voor {company.name}, {company.owner}, {contact.address}.
+        </p>
+        <p className="mt-4">
+          Mail:{" "}
           <a href={`mailto:${contact.email}`} data-cta="mail" className="underline underline-offset-4">
             {contact.email}
           </a>
-          . Telefoon:{" "}
+        </p>
+        <p className="mt-2">
+          Telefoon:{" "}
           <a href={contact.phoneTel} data-cta="bellen" className="underline underline-offset-4">
             {contact.phone}
           </a>
-          .
         </p>
 
-        <Rei />
-        <h2 className="mt-8 text-3xl">Het formulier</h2>
+        <Rei className="my-10" />
+        <h2 className="text-3xl">Het formulier</h2>
         <p className="mt-4">
           Het offerteformulier verstuurt niets naar een server. Na het klikken opent uw eigen mailprogramma een bericht aan {contact.email}. Pas als u dat bericht zelf verzendt, komt het aan. Tot die klik blijft de tekst op uw apparaat.
         </p>
 
-        <Rei />
-        <h2 className="mt-8 text-3xl">Bezoek</h2>
+        <Rei className="my-10" />
+        <h2 className="text-3xl">Bezoek</h2>
         <p className="mt-4">
           Sleads meet het paginabezoek van dit concept, zodat het concept gevolgd kan worden. Er wordt geen account gevraagd.
         </p>

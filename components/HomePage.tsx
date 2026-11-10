@@ -17,12 +17,15 @@ import Photo from "@/components/Photo";
 import Rei from "@/components/Rei";
 import SiteFrame from "@/components/SiteFrame";
 
-const homeProjects = projects.filter((item) => item.home);
+const homeProjects = ["schalkhaar", "deventer", "apeldoorn", "olst"].flatMap((id) => {
+  const item = projects.find((project) => project.id === id);
+  return item ? [item] : [];
+});
 
 export default function HomePage() {
   return (
     <SiteFrame>
-      <section data-section="hero" className="mx-auto grid max-w-6xl items-end gap-10 px-5 py-12 lg:grid-cols-12 lg:py-16">
+      <section data-section="hero" className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-12 lg:grid-cols-12 lg:py-16">
         <div className="rise lg:col-span-7">
           <p className="text-base text-voeg">Welkom bij {company.styledName}.</p>
           <h1 className="mt-3 max-w-3xl text-4xl text-inkt sm:text-5xl lg:text-6xl">
@@ -30,19 +33,20 @@ export default function HomePage() {
           </h1>
           <p className="mt-6 max-w-xl">{experience}</p>
           <CtaPair className="mt-6" />
-          <p className="mt-6 max-w-xl text-voeg">
-            Erkend en vakbekwaam stukadoors- en afbouwbedrijf uit Deventer, voor het sausklaar afwerken van wanden en plafonds. Voor huis en bedrijfspand in {company.regionHome}.
-          </p>
         </div>
-        <figure className="rise-late border border-rei bg-stucvlak lg:col-span-5">
+        <figure className="rise-late border border-rei bg-stucvlak lg:col-span-5 lg:row-span-2">
           <Photo
             src="/img/diensten/sausklaar-stukwerk.jpg"
             width={800}
             height={605}
             alt="Sausklaar gestuct interieur met gladde wanden, schouw en plafond."
             priority
+            frame="4/3"
           />
         </figure>
+        <p className="max-w-xl text-voeg lg:col-span-7">
+          Erkend en vakbekwaam stukadoors- en afbouwbedrijf uit Deventer, voor het sausklaar afwerken van wanden en plafonds. Voor huis en bedrijfspand in {company.regionHome}.
+        </p>
       </section>
 
       <Lichtgraas />
@@ -80,7 +84,7 @@ export default function HomePage() {
           ].map((item, index) =>
             item ? (
               <li key={item.id} className="border border-rei bg-stucvlak">
-                <Photo src={item.src} width={item.width} height={item.height} alt={item.alt} />
+                <Photo src={item.src} width={item.width} height={item.height} alt={item.alt} frame="4/3" />
                 <div className="border-t border-rei px-4 py-4">
                   <p className="font-mono text-xs tracking-[0.14em] text-inkt">{["VOORSTRIJK", "OP DE SPAAN", "SAUSKLAAR"][index]}</p>
                   <p className="mt-2 font-display text-xl">{item.title}</p>
@@ -126,10 +130,10 @@ export default function HomePage() {
             {homeProjects.map((item) => (
               <li key={item.id} className="border border-rei bg-spekglad">
                 <Link href={`/projecten#${item.id}`}>
-                  <Photo src={item.src} width={item.width} height={item.height} alt={item.alt} />
+                  <Photo src={item.src} width={item.width} height={item.height} alt={item.alt} frame="4/3" />
                   <div className="border-t border-rei px-4 py-4">
                     <p className="font-display text-xl">{item.title}</p>
-                    <p className="mt-2 text-base text-voeg">{item.caption}</p>
+                    <p className="mt-2 line-clamp-3 text-base text-voeg">{item.caption}</p>
                   </div>
                 </Link>
               </li>

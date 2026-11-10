@@ -64,7 +64,7 @@ const notes: Record<string, { left: string; right?: string; title: string; lines
   },
   airless: {
     left: "200 BAR",
-    title: "Hun vergelijking",
+    title: "Spuiten of rollen",
     lines: [
       "Airless pomp, 200 bar.",
       "Vooral aantrekkelijk vanaf 100 m².",
@@ -115,13 +115,13 @@ const pageFaq: Record<string, number[]> = {
 };
 
 const work: Record<string, string[]> = {
-  sausklaar: ["deventer", "uitvoering", "sausklaar"],
-  wanden: ["deventer-lijst", "plafond-af", "uitvoering"],
-  buitenmuur: ["schalkhaar", "schalkhaar-werk", "spachtelputz"],
-  badkamer: ["apeldoorn", "badkamer"],
-  "beton-cire": ["beton-cire", "apeldoorn"],
-  airless: ["sausklaar", "uitvoering"],
-  sausen: ["sausklaar", "deventer"],
+  sausklaar: ["deventer", "sausklaar"],
+  wanden: ["deventer-lijst", "uitvoering"],
+  buitenmuur: ["schalkhaar", "spachtelputz"],
+  badkamer: ["badkamer", "beton-cire"],
+  "beton-cire": ["apeldoorn", "badkamer"],
+  airless: ["sausklaar", "deventer"],
+  sausen: ["deventer", "uitvoering"],
   spachtelputz: ["spachtelputz", "gevel-werk"],
   lijsten: lijstFotos,
 };
@@ -135,19 +135,6 @@ export default function ServicePage({ id }: { id: keyof typeof pages }) {
       <div className="grid items-start gap-12 lg:grid-cols-12">
         <div className="lg:col-span-7">
           <Blocks sections={page.sections} />
-          {id === "sausklaar" || id === "wanden" ? <LayerBars /> : null}
-          {id === "sausklaar" ? (
-            <div className="mt-12 border border-rei">
-              <Comparison />
-            </div>
-          ) : null}
-          {id === "spachtelputz" ? <Swatches /> : null}
-          {id === "airless" ? (
-            <figure className="mt-10 inline-block border border-rei bg-wit p-3">
-              <Photo src="/img/producten/latex-spuit-pistool.jpg" width={155} height={200} alt="Airless spuitpistool voor latex." />
-              <figcaption className="mt-2 max-w-[155px] text-base text-voeg">Spuitpistool, klein afgebeeld.</figcaption>
-            </figure>
-          ) : null}
         </div>
         {note ? (
           <aside className="border border-rei bg-stucvlak p-5 lg:col-span-5 lg:sticky lg:top-28">
@@ -162,6 +149,19 @@ export default function ServicePage({ id }: { id: keyof typeof pages }) {
           </aside>
         ) : null}
       </div>
+      {id === "sausklaar" || id === "wanden" ? <LayerBars /> : null}
+      {id === "sausklaar" ? (
+        <div className="mt-12 border border-rei">
+          <Comparison showLinks={false} />
+        </div>
+      ) : null}
+      {id === "spachtelputz" ? <Swatches /> : null}
+      {id === "airless" ? (
+        <figure className="mt-10 inline-block border border-rei bg-wit p-3">
+          <Photo src="/img/producten/latex-spuit-pistool.jpg" width={155} height={200} alt="Airless spuitpistool voor latex." />
+          <figcaption className="mt-2 max-w-[155px] text-base text-voeg">Spuitpistool, klein afgebeeld.</figcaption>
+        </figure>
+      ) : null}
       <RelatedWork ids={work[id] ?? []} title={id === "lijsten" ? "Olst en lijstwerk" : "Op de foto"} />
       {(pageFaq[id] ?? []).length > 0 ? (
         <div className="mt-12 max-w-3xl">

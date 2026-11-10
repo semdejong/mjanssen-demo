@@ -54,7 +54,9 @@ export default function ContactPage() {
           </address>
         </header>
 
-        <Rei />
+        <div className="mx-auto max-w-6xl px-5">
+          <Rei />
+        </div>
 
         <section data-section="bereik" className="mx-auto grid max-w-6xl gap-8 px-5 py-14 lg:grid-cols-3">
           {[
