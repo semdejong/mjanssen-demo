@@ -65,6 +65,32 @@ export default function HomePage() {
         <Rei />
       </section>
 
+      <section data-section="wandverloop" className="mx-auto max-w-6xl px-5 py-16">
+        <div className="grid items-end gap-6 lg:grid-cols-12">
+          <h2 className="text-4xl lg:col-span-6 lg:text-5xl">Van voorstrijk tot sausklaar</h2>
+          <p className="text-voeg lg:col-span-5 lg:col-start-8">
+            Eerst een egaal zuigende ondergrond, dan de laag op de rei, dan een wand die onder elke lichtinval glad is.
+          </p>
+        </div>
+        <ol className="mt-8 grid gap-8 lg:grid-cols-3">
+          {[
+            projects.find((item) => item.id === "deventer"),
+            projects.find((item) => item.id === "uitvoering"),
+            projects.find((item) => item.id === "sausklaar"),
+          ].map((item, index) =>
+            item ? (
+              <li key={item.id} className="border border-rei bg-stucvlak">
+                <Photo src={item.src} width={item.width} height={item.height} alt={item.alt} />
+                <div className="border-t border-rei px-4 py-4">
+                  <p className="font-mono text-xs tracking-[0.14em] text-inkt">{["VOORSTRIJK", "OP DE SPAAN", "SAUSKLAAR"][index]}</p>
+                  <p className="mt-2 font-display text-xl">{item.title}</p>
+                </div>
+              </li>
+            ) : null,
+          )}
+        </ol>
+      </section>
+
       <section data-section="diensten" className="mx-auto max-w-6xl px-5 py-16">
         <div className="grid items-end gap-6 lg:grid-cols-12">
           <h2 className="text-4xl lg:col-span-5 lg:text-5xl">Afwerking langs de rei</h2>

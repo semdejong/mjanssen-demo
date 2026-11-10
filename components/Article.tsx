@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import type { Img } from "@/content";
+import ClosingBand from "@/components/ClosingBand";
 import CtaPair from "@/components/CtaPair";
 import Photo from "@/components/Photo";
 import Rei from "@/components/Rei";
@@ -46,6 +47,7 @@ export default function Article({ title, lead, image, children, related = [] }: 
             </ul>
           </aside>
         ) : null}
+        <ClosingBand />
       </article>
     </SiteFrame>
   );

@@ -44,6 +44,7 @@ export const company = {
   logoWidth: 212,
   logoHeight: 86,
   city: "Deventer",
+  cities: ["Deventer", "Apeldoorn", "Zwolle", "Zutphen", "Arnhem", "Enschede"] as const,
   region: "Deventer, Apeldoorn, Zwolle, Zutphen, Arnhem en Enschede",
   regionHome: "Deventer, Apeldoorn, Zwolle, Zutphen, Arnhem en Enschede, of waar dan ook in Nederland",
 };
@@ -742,6 +743,12 @@ export const pages: Record<string, PageCopy> = {
     metaDescription:
       "Muren en plafonds sausen in Deventer en omstreken. Traditioneel met rol en stok, of met de airless pomp. Alleen op een volledig droge wand.",
     lead: "Wilt u sauzen, dan worden de muren sausklaar opgeleverd: extra glad, zodat de verf strak ligt. De kleur kunt u later weer veranderen.",
+    image: {
+      src: "/img/diensten/sausklaar-stukwerk.jpg",
+      width: 800,
+      height: 605,
+      alt: "Sausklaar gestuct interieur, klaar om te sauzen of te spuiten.",
+    },
     sections: [
       {
         heading: "Rol en stok, of spuiten",
