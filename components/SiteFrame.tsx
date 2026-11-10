@@ -10,7 +10,7 @@ export default function SiteFrame({ children }: { children: ReactNode }) {
         Naar de inhoud
       </a>
       <SiteHeader />
-      <main id="inhoud" className="flex-1">
+      <main id="inhoud" className="min-w-0 w-full flex-1">
         {children}
       </main>
       <SiteFooter />

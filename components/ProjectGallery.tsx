@@ -31,9 +31,9 @@ export default function ProjectGallery({ items }: { items: Project[] }) {
     <>
       <ul className="grid grid-cols-1 gap-8 sm:grid-cols-2">
         {items.map((item, itemIndex) => (
-          <li key={item.id} id={item.id} className="border border-rei bg-stucvlak">
+          <li key={item.id} id={item.id} className="min-w-0 max-w-full border border-rei bg-stucvlak">
             <button type="button" className="block w-full text-left" onClick={() => setIndex(itemIndex)} aria-label={`Vergroot foto: ${item.title}`}>
-              <span className="flex aspect-[4/3] min-w-0 items-center justify-center overflow-hidden">
+              <span className="flex aspect-[4/3] w-full min-w-0 items-center justify-center overflow-hidden">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={item.src}

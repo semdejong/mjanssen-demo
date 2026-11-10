@@ -26,7 +26,7 @@ export default function Article({ title, lead, image, children, related = [] }: 
             <CtaPair className="mt-8" />
           </div>
           {image ? (
-            <figure className="border border-rei bg-stucvlak lg:col-span-5">
+            <figure className="w-full min-w-0 max-w-full border border-rei bg-stucvlak lg:col-span-5">
               <Photo {...image} />
             </figure>
           ) : null}

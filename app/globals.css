@@ -65,9 +65,11 @@ body {
     max-width: 100%;
   }
 
-  /* A large native photo must not force its grid column past the viewport. */
+  /* Flex/grid children default to min-width: auto and would grow past the viewport. */
+  body > *,
   .grid > * {
     min-width: 0;
+    max-width: 100%;
   }
 }
 

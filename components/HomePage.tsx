@@ -25,7 +25,7 @@ const homeProjects = ["schalkhaar", "deventer", "apeldoorn", "olst"].flatMap((id
 export default function HomePage() {
   return (
     <SiteFrame>
-      <section data-section="hero" className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-12 lg:grid-cols-12 lg:py-16">
+      <section data-section="hero" className="mx-auto grid w-full max-w-6xl items-center gap-10 px-5 py-12 lg:grid-cols-12 lg:py-16">
         <div className="rise lg:col-span-7">
           <p className="text-base text-voeg">Welkom bij {company.styledName}.</p>
           <h1 className="mt-3 max-w-3xl text-4xl text-inkt sm:text-5xl lg:text-6xl">
@@ -34,7 +34,7 @@ export default function HomePage() {
           <p className="mt-6 max-w-xl">{experience}</p>
           <CtaPair className="mt-6" />
         </div>
-        <figure className="rise-late border border-rei bg-stucvlak lg:col-span-5 lg:row-span-2">
+        <figure className="rise-late w-full min-w-0 max-w-full border border-rei bg-stucvlak lg:col-span-5 lg:row-span-2">
           <Photo
             src="/img/diensten/sausklaar-stukwerk.jpg"
             width={800}
@@ -61,7 +61,7 @@ export default function HomePage() {
             ["Binnen en buiten", "Wanden, plafonds, gevel"],
           ].map(([title, note]) => (
             <li key={title} className="border-b border-rei px-5 py-6 lg:border-b-0 lg:border-r lg:last:border-r-0">
-              <p className="font-display text-2xl text-inkt">{title}</p>
+              <p className="font-display text-xl leading-tight text-inkt sm:text-2xl">{title}</p>
               <p className="mt-1 text-base text-voeg">{note}</p>
             </li>
           ))}
